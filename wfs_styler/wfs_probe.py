@@ -9,7 +9,6 @@ from qgis.PyQt.QtNetwork import QNetworkRequest
 from qgis.PyQt.QtXml import QDomDocument
 
 from qgis.core import QgsBlockingNetworkRequest
-from urllib.parse import urlparse
 
 
 class WfsStyleProbe(object):
@@ -168,6 +167,7 @@ class WfsStyleProbe(object):
         
         result = []
 
+        # replace 'wfs' by 'wms' in path
         wms_path_elements = []
         for wfs_path_elem in self.wfs_url.path().split('/'):
             if wfs_path_elem.lower() == 'wfs':
@@ -181,11 +181,4 @@ class WfsStyleProbe(object):
 
         result.append(wms_url)
 
-        wms_url = QUrl(self.wfs_url)
-        wms_url.setPath('een/andere/wms')
-        result.append(wms_url)
-
-
         return result
-
-

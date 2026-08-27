@@ -75,8 +75,6 @@ class WfsStylerPlugin():
 
         self.pick_style_dlg.set_styles(probe.styles)
 
--       #self.pick_style_dlg.show()
--       #self.generate_calc_input_dlg.show()
         result = self.pick_style_dlg.exec()
         if result:
             style_name = self.pick_style_dlg.list_styles.currentItem().text()
