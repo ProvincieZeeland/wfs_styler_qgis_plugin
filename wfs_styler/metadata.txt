@@ -6,9 +6,9 @@ about=If an OGC service is hosting data both as WMS and WFS layers, this plugin
     (SLD's) and sets the style to the WFS.
 
     This plugin was sponsored by Provincie Zeeland, The Netherlands.
-version=1.0.1
-qgisMinimumVersion=3.22
-qgisMaximumVersion=4.98
+version=1.1.0
+qgisMinimumVersion=3.22.0
+qgisMaximumVersion=4.98.99
 supportsQt6=True
 author=Raymond Nijssen
 email=r.nijssen@terglobo.nl
