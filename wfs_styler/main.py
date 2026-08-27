@@ -75,8 +75,8 @@ class WfsStylerPlugin():
 
         self.pick_style_dlg.set_styles(probe.styles)
 
-        #self.pick_style_dlg.show()
-        #self.generate_calc_input_dlg.show()
+-       #self.pick_style_dlg.show()
+-       #self.generate_calc_input_dlg.show()
         result = self.pick_style_dlg.exec()
         if result:
             style_name = self.pick_style_dlg.list_styles.currentItem().text()
@@ -85,13 +85,12 @@ class WfsStylerPlugin():
             print('Canceled')
             return
 
-
         tmp_dir = QStandardPaths.writableLocation(QStandardPaths.StandardLocation.TempLocation)
         sld_fn = os.path.join(tmp_dir, 'qgis_wfs_styler_plugin_style.sld')
         #print(sld_fn)
 
         if probe.create_sld_file(style_name, sld_fn):
             layer.loadSldStyle(sld_fn)
-            self.iface.mapCanvas().refreshAllLayers() # TODO: Figure out if this is the most efficient
+            layer.triggerRepaint()
         else:
             print('No SLD file created')
