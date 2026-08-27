@@ -86,7 +86,7 @@ class WfsStylerPlugin():
             return
 
 
-        tmp_dir = QStandardPaths.writableLocation(QStandardPaths.TempLocation)
+        tmp_dir = QStandardPaths.writableLocation(QStandardPaths.StandardLocation.TempLocation)
         sld_fn = os.path.join(tmp_dir, 'qgis_wfs_styler_plugin_style.sld')
         #print(sld_fn)
 
