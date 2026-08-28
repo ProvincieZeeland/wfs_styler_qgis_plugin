@@ -7,7 +7,7 @@
 import os
 
 from qgis.PyQt.QtCore import QStandardPaths
-from qgis.PyQt.QtWidgets import QAction, QDialog, QMessageBox
+from qgis.PyQt.QtWidgets import QAction, QMessageBox
 from qgis.PyQt.QtGui import QIcon
 
 from qgis.core import QgsVectorLayer
@@ -29,7 +29,7 @@ class WfsStylerPlugin():
         self.action = QAction(icon, 'Find style for active WFS layer', self.iface.mainWindow())
         self.action.triggered.connect(self.probe_active_layer)
         self.iface.addToolBarIcon(self.action)
-        
+
         self.iface.mapCanvas().currentLayerChanged.connect(self.update_widgets)
 
         self.update_widgets()
@@ -66,7 +66,7 @@ class WfsStylerPlugin():
 
         probe = WfsStyleProbe(layer)
 
-        #print('Found styles: {}'.format(len(probe.styles)))
+        # print('Found styles: {}'.format(len(probe.styles)))
 
         if len(probe.styles) == 0:
             print('No styles found')
@@ -85,7 +85,7 @@ class WfsStylerPlugin():
 
         tmp_dir = QStandardPaths.writableLocation(QStandardPaths.StandardLocation.TempLocation)
         sld_fn = os.path.join(tmp_dir, 'qgis_wfs_styler_plugin_style.sld')
-        #print(sld_fn)
+        # print(sld_fn)
 
         if probe.create_sld_file(style_name, sld_fn):
             layer.loadSldStyle(sld_fn)

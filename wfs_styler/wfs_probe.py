@@ -28,7 +28,7 @@ class WfsStyleProbe(object):
         """Creates a dictionary from a QgsVectorLayer source string (bit hacky...)"""
         s = self.layer.source()
         return self._get_dict_from_string(s, kv_sep='=')
-    
+
     def _get_dict_from_string(self, s, item_sep=' ', kv_sep=':'):
         result = {}
         kv_parts = s.split(item_sep)
@@ -97,22 +97,22 @@ class WfsStyleProbe(object):
                     node = user_style.firstChildElement('Name')
                     name = node.toElement().text()
                     if name == '':
-                        name = f'Style {i + 1}' # Should always have name.
+                        name = f'Style {i + 1}'  # Should always have name.
                     node = user_style.firstChildElement('Title')
                     title = node.toElement().text()
                     node = user_style.firstChildElement('FeatureTypeStyle')
-                    
+
                     style_dict[name] = {
                         'name': name,
                         'title': title,
                         'sld_node': node
                     }
-                
+
                 # print(style_dict)
                 if len(style_dict) > 0:
                     self.wms_url = wms_url
                     return style_dict
-            
+
         return style_dict
 
     def create_sld_file(self, style_name, sld_fn):
@@ -164,7 +164,7 @@ class WfsStyleProbe(object):
     def guess_wms_urls(self):
         if self.wfs_url is None or self.wfs_url.isEmpty():
             return []
-        
+
         result = []
 
         # replace 'wfs' by 'wms' in path
