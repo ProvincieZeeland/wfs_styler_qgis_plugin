@@ -19,6 +19,12 @@ style name(s) to the user.
 
 The user can pick a style and the plugin will apply that style to the active layer.
 
+### Trying/testing
+
+A WFS url for testing is `https://opengeodata.zeeland.nl/geoserver/wbn/wfs?` where the layer
+`Natuurbeheerplan Zeeland` should have 3 styles defined in the corresponding WMS. (confirmed 
+in August 2026).
+
 ## Limitations
 
 * The plugin will download the SLD file and load it on the layer. There are (many)
